@@ -67,4 +67,4 @@ numerosArray.pop()
 numerosArray.shift()
 
 console.log("Array final:", numerosArray)
-console.log("Tamanho do array:", numerosArray.length)
+console.log("Tamanho do array:", numerosArray.length);
