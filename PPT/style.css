@@ -26,6 +26,7 @@
 img{
     width: 96px;
     margin: 0 25px;
+    padding-right: 30px;
 }
 
 #jogador, #computador{
