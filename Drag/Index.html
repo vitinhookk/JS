@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #area {
+        width: 300px;
+        height: 300px;
+        border: 2px solid black;
+        margin-bottom: 20px;
+    }
+    </style>
+</head>
+<body>
+    <div id="area" ondrop="soltar(event)" ondragover="permitirSoltar(event)">Solte aqui</div>
+    <div id="caixa" draggable="true" ondragstart="comecarArrastar(event)">Arraste-me></div>
+    <script src="Script.js"></script>
+</body>
+</html>
