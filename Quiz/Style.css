@@ -11,18 +11,22 @@
 
 /* Estilizando o corpo da página */
 body {
-    background-color: rgb(219, 219, 219);
+    background-color: rgba(219, 219, 219, 0.158);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url(img/Fundo.png);
+    background-size: cover;
 }
 
 /* Container principal do quiz */
 .container {
     background-color: white;
+    border:#000000;
+    border-style: solid;
     padding: 2rem;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     width: 90%;
@@ -53,7 +57,7 @@ h1 {
 
 /* Cor do número de acertos */
 #acertos {
-    color: #5d56bd;
+    color: #2bff00;
 }
 
 /* Cor do número de erros */
@@ -89,9 +93,9 @@ h1 {
 
 /* Estilo da opção selecionada */
 .opcao.selecionada {
-    background-color: #5d56bd;
+    background-color: #2ee1e7;
     color: white;
-    border-color: #5f58bd;
+    border-color: #055f83;
 }
 
 /* Estilo dos botões */

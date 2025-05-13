@@ -1,34 +1,116 @@
-//cada pergunta tem
-// - A pergunta
-// - as opções
-// - a alternativa certa (começa no 0)
 const perguntas = [
     {
-      pergunta: "Qual o nome da nossa escola?",
+      pergunta: "Qual é a principal causa do efeito estufa na Terra?",
       opcoes: [
-        "Luis Eulalio de Bueno Vidigal Filho",
-        "Luis Eulalio",
-        "Luis de Bueno",
-        "Luis Eulalio de Vidigal"
+        "A diminuição do oxigênio na atmosfera",
+        "A presença de gás carbônico (CO₂) em excesso",
+        "A ausência de chuvas ácidas",
+        "A camada de ozônio",
+        "A presença de nitrogênio no ar"
       ],
-      correta: 0
+      correta: 1
     },
     {
-      pergunta: "Qual o nome do nosso curso?",
+      pergunta: "Qual é o nome da camada gasosa que envolve a Terra?",
       opcoes: [
-        "Analise e Desenvolvimento de Sistemas",
-        "Sistemas de informação",
-        "Desenvolvimento de sistemas",
-        "Ciencia da Computação"
+        "Hidrosfera",
+        "Litosfera",
+        "Atmosfera",
+        "Biosfera",
+        "Geosfera"
       ],
       correta: 2
     },
     {
-     pergunta: "Em que ano foi fundado a nossa Escola?",
-     opcoes:["1999", "1942", "1985", "1970"],
-     correta: 1
+      pergunta: "O que é uma rocha sedimentar?",
+      opcoes: [
+        "Rocha formada pelo resfriamento do magma",
+        "Rocha que surge do metamorfismo",
+        "Rocha formada pela compactação de sedimentos",
+        "Rocha originada de cristais",
+        "Rocha formada exclusivamente de magma líquido"
+      ],
+      correta: 2
+    },
+    {
+      pergunta: "Qual substância é usada para identificar a presença de amido nos alimentos?",
+      opcoes: [
+        "Ácido clorídrico",
+        "Água destilada",
+        "Vinagre",
+        "Iodo",
+        "Álcool etílico"
+      ],
+      correta: 3
+    },
+    {
+      pergunta: "Qual é o principal gás responsável pela chuva ácida?",
+      opcoes: [
+        "Gás carbônico",
+        "Gás oxigênio",
+        "Gás metano",
+        "Dióxido de enxofre (SO₂)",
+        "Vapor d’água"
+      ],
+      correta: 3
+    },
+    {
+      pergunta: "Qual é o nome do processo de separação de misturas usado para obter sal da água do mar?",
+      opcoes: [
+        "Destilação fracionada",
+        "Peneiração",
+        "Decantação",
+        "Evaporação",
+        "Filtração"
+      ],
+      correta: 3
+    },
+    {
+      pergunta: "Qual destes planetas é conhecido por seus anéis?",
+      opcoes: [
+        "Marte",
+        "Terra",
+        "Saturno",
+        "Mercúrio",
+        "Netuno"
+      ],
+      correta: 2
+    },
+    {
+      pergunta: "Qual é a composição principal da água?",
+      opcoes: [
+        "H₂SO₄",
+        "CO₂",
+        "H₂O",
+        "NaCl",
+        "CH₄"
+      ],
+      correta: 2
+    },
+    {
+      pergunta: "O que acontece com a água quando ela ferve?",
+      opcoes: [
+        "Torna-se um sólido",
+        "Torna-se um gás",
+        "Torna-se um ácido",
+        "Perde seus minerais",
+        "Se transforma em sal"
+      ],
+      correta: 1
+    },
+    {
+      pergunta: "Qual dos seguintes fenômenos está relacionado ao movimento das placas tectônicas?",
+      opcoes: [
+        "Arco-íris",
+        "Formação das nuvens",
+        "Terremotos",
+        "Evaporação da água",
+        "Radiação solar"
+      ],
+      correta: 2
     }
   ];
+  
 let perguntaAtual = 0
 let pontuacao = 0
 let erros = 0
