@@ -1,0 +1,55 @@
+ @import url('https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap');
+ body {
+            font-family: Mitr, sans-serif;  
+            background-color: #f8c9a2;
+            background-size: cover;
+            color: #855638;
+            text-align: center;
+            padding-top: 60px;
+        }
+
+
+
+        h1 {
+            padding: 20px;
+            border-radius: 12px;
+            display: inline-block;
+            font-family: 'Mitr', sans-serif;
+        }
+
+        #contador {
+            font-size: 2rem;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #222;
+            padding: 20px 40px;
+            border-radius: 12px;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #chegou {
+            font-size: 2rem;
+            color: green;
+        }
+
+        .barra-container {
+            width: 80%;
+            margin: 20px auto;
+            height: 20px;
+            background: #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .barra-progresso {
+            height: 100%;
+            background: #28a745;
+            width: 0%;
+            transition: width 1s;
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-top: 20px;
+        }
