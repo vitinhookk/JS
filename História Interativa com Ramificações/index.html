@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobrevivência em uma Ilha Deserta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        #game-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #2e8b57;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        button {
+            background-color: #4682b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #5a9bd4;
+        }
+        #output {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h1>🏝️ Sobrevivência em uma Ilha Deserta</h1>
+        <div id="output"></div>
+        <div id="choices"></div>
+    </div>
+
+    <script>
+        const output = document.getElementById('output');
+        const choicesDiv = document.getElementById('choices');
+        let inventory = {
+            water: false,
+            food: false,
+            shelter: false,
+            signal: false,
+            tool: false
+        };
+
+        function displayScene(text, choices, callback) {
+            output.innerHTML = `<p>${text}</p>`;
+            choicesDiv.innerHTML = '';
+            choices.forEach(choice => {
+                const button = document.createElement('button');
+                button.textContent = choice.text;
+                button.onclick = choice.action;
+                choicesDiv.appendChild(button);
+            });
+            if (callback) callback();
+        }
+
+        function startGame() {
+            displayScene(
+                'Você acorda em uma ilha deserta após um naufrágio.Você precisa sobreviver. Ao seu redor, você vê uma praia, uma floresta densa e destroços do barco. O que você faz primeiro?',
+                [
+                    { text: 'Explorar os destroços do barco 🚢', action: exploreWreck },
+                    { text: 'Entrar na floresta 🌴', action: exploreForest },
+                    { text: 'Ficar na praia e procurar água 🥤', action: searchWater }
+                ]
+            );
+        }
+
+        function exploreWreck() {
+            if (inventory.tool) {
+                displayScene('Você já explorou os destroços e encontrou uma faca. O que fazer agora?', backToStartChoices());
+                return;
+            }
+            displayScene(
+                'Nos destroços, você encontra uma faca enferrujada, mas útil, e alguns trapos. Pegar a faca? 🔪',
+                [
+                    { text: 'Pegar a faca', action: () => {
+                        inventory.tool = true;
+                        displayScene('Você pegou a faca! Ela pode ser útil. O que fazer agora?', backToStartChoices());
+                    }},
+                    { text: 'Ignorar e voltar', action: startGame }
+                ]
+            );
+        }
+
+        function exploreForest() {
+            if (inventory.food) {
+                displayScene('Você já explorou a floresta e encontrou frutas. O que fazer agora?', backToStartChoices());
+                return;
+            }
+            displayScene(
+                'Na floresta, você vê frutas em uma árvore alta e um riacho. O que você faz? 🌿',
+                [
+                    { text: 'Tentar pegar as frutas', action: climbTree },
+                    { text: 'Ir até o riacho', action: goToStream }
+                ]
+            );
+        }
+
+        function searchWater() {
+            if (inventory.water) {
+                displayScene('Você já encontrou água na praia. O que fazer agora?', backToStartChoices());
+                return;
+            }
+            displayScene(
+                'Na praia, você encontra uma garrafa com água potável meio cheia. Beber agora ou guardar? 🥤',
+                [
+                    { text: 'Beber agora', action: () => {
+                        displayScene('Você bebeu a água, mas agora está sem suprimento. Isso pode ser um problema... O que fazer?', backToStartChoices());
+                    }},
+                    { text: 'Guardar a água', action: () => {
+                        inventory.water = true;
+                        displayScene('Você guardou a água! Boa escolha. O que fazer agora?', backToStartChoices());
+                    }}
+                ]
+            );
+        }
+
+        function climbTree() {
+            if (inventory.tool) {
+                inventory.food = true;
+                displayScene('Com a faca, você corta uma corda e alcança as frutas! 🍎 Você agora tem comida. O que fazer?', backToStartChoices());
+            } else {
+                displayScene(
+                    'Você tenta subir, mas a árvore é escorregadia, e você cai, se machucando. 😣 Tentar novamente ou voltar?',
+                    [
+                        { text: 'Tentar novamente', action: () => endGame('Você caiu novamente e se feriu gravemente. Sem ajuda, você não sobrevive. Fim de jogo. 😔') },
+                        { text: 'Voltar', action: exploreForest }
+                    ]
+                );
+            }
+        }
+
+        function goToStream() {
+            if (inventory.water) {
+                displayScene('Você já tem água. O riacho parece limpo, mas não é necessário agora. O que fazer?', backToStartChoices());
+                return;
+            }
+            displayScene(
+                'O riacho tem água limpa, mas pode estar contaminada. O que você faz? 💧',
+                [
+                    { text: 'Beber a água', action: () => endGame('A água estava contaminada! Você fica doente e não sobrevive. Fim de jogo. 😷') },
+                    { text: 'Coletar com cuidado', action: () => {
+                        inventory.water = true;
+                        displayScene('Você coletou água com cuidado. Boa escolha! O que fazer agora?', backToStartChoices());
+                    }}
+                ]
+            );
+        }
+
+        function buildShelter() {
+            if (inventory.shelter) {
+                displayScene('Você já construiu um abrigo. O que fazer agora?', backToStartChoices());
+                return;
+            }
+            if (inventory.tool) {
+                inventory.shelter = true;
+                displayScene('Com a faca, você corta galhos e constrói um abrigo resistente. 🏕️ O que fazer agora?', backToStartChoices());
+            } else {
+                displayScene('Sem ferramentas, seu abrigo desmorona na primeira chuva. 🌧️ Tentar novamente ou fazer outra coisa?', [
+                    { text: 'Tentar novamente', action: () => endGame('Você gasta toda sua energia e não consegue um abrigo. Uma tempestade chega, e você não sobrevive. Fim de jogo. 😢') },
+                    { text: 'Fazer outra coisa', action: startGame }
+                ]);
+            }
+        }
+
+        function makeSignal() {
+            if (inventory.signal) {
+                displayScene('Você já fez um sinal de socorro. O que fazer agora?', backToStartChoices());
+                return;
+            }
+            displayScene(
+                'Você pode fazer um sinal de socorro. Usar madeira para uma fogueira ou escrever na areia? 🔥',
+                [
+                    { text: 'Fazer fogueira', action: () => {
+                        inventory.signal = true;
+                        checkSurvival();
+                    }},
+                    { text: 'Escrever na areia', action: () => endGame('Você escreveu "SOS" na areia, mas a maré apagou. Sem sinal, ninguém te encontra. Fim de jogo. 😞') }
+                ]
+            );
+        }
+
+        function backToStartChoices() {
+            return [
+                { text: 'Explorar os destroços 🚢', action: exploreWreck },
+                { text: 'Entrar na floresta 🌴', action: exploreForest },
+                { text: 'Procurar água 🥤', action: searchWater },
+                { text: 'Construir um abrigo 🏕️', action: buildShelter },
+                { text: 'Fazer um sinal de socorro 🔥', action: makeSignal }
+            ];
+        }
+
+        function checkSurvival() {
+            if (inventory.water && inventory.food && inventory.shelter && inventory.signal) {
+                endGame('Você conseguiu água, comida, abrigo e fez um sinal de socorro! Um helicóptero te resgata! Parabéns, você sobreviveu! 🎉');
+            } else {
+                displayScene('Você fez um sinal de socorro, mas ainda precisa de mais recursos para sobreviver. O que fazer?', backToStartChoices());
+            }
+        }
+
+        function endGame(message) {
+            displayScene(message, [
+                { text: 'Jogar novamente', action: () => {
+                    inventory = { water: false, food: false, shelter: false, signal: false, tool: false };
+                    startGame();
+                }}
+            ]);
+        }
+
+        startGame();
+    </script>
+</body>
+</html>
