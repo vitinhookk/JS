@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jukebox Visual</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap');
+
+        body { 
+            font-family: 'Mitr', sans-serif; 
+            text-align: center; 
+            transition: background-color 0.5s;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 { color: #333; }
+        button { 
+            padding: 10px 20px; 
+            margin: 5px; 
+            cursor: pointer; 
+            border-radius: 5px; 
+            font-family: 'Mitr', sans-serif;
+        }
+        #imagem { 
+            margin-top: 30px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+        }
+        #foto { 
+            width: 300px; 
+            display: none;
+        }
+        #audio { 
+            margin-top: 20px; 
+            display: none;
+            width: 300px; /* Define uma largura fixa para centralizar */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #musicaNome { 
+            font-size: 18px; 
+            font-weight: bold; 
+            margin-top: 10px;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jukebox Visual</h1>
+    <p>Selecione uma emoção e mergulhe na experiência!</p>
+
+    <div class="button-container">
+        <button onclick="tocar('alegria')">ALEGRIA</button>
+        <button onclick="tocar('tristeza')">TRISTEZA</button>
+        <button onclick="tocar('aventura')">AVENTURA</button>
+        <button onclick="tocar('amor')">AMOR</button>
+        <button onclick="tocar('misterio')">TERROR</button>
+        <button onclick="tocar('calma')">RELAXAMENTO</button>
+        <button onclick="tocar('animacao')">ANIMAÇÃO</button>
+        <button onclick="tocar('suspense')">SUSPENSE</button>
+        <button onclick="parar()">PARAR</button>
+    </div>
+
+    <div id="imagem">
+        <img src="" alt="" id="foto" width="300">
+    </div>
+    <div id="musicaNome"></div>
+    <audio src="" id="audio" controls></audio>
+
+    <script>
+        function tocar(tipo) {
+            const audio = document.getElementById("audio");
+            const foto = document.getElementById("foto");
+            const musicaNome = document.getElementById("musicaNome");
+
+            let musica = "";
+            let imagem = "";
+            let cor = "";
+            let fundo = "";
+
+            if (tipo === "alegria") {
+                musica = "https://rr2---sn-bg0e6ner.googlevideo.com/videoplayback?expire=1750188068&ei=xGtRaOSDAerq6dsP6eeXOQ&ip=82.23.90.83&id=o-ANmNMxrXUBM556CgyN9lczoBMSNieq3lsMcqXBSCf5W7&itag=249&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AY1jyLNI7xN6IAllTT50wZXZ6KfXBClDLC5LZgPn0oiTj3zmlCCG7tn88qtJV4lmxEs73upVzxlUSFAg&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=-ODn8qcskq7eAmUHG9HqVH0Q&rqh=1&gir=yes&clen=1435209&dur=200.681&lmt=1714538471044347&keepalive=yes&lmw=1&fexp=24350590,24350737,24350827,24350961,24351173,24351316,24351318,24351495,24351528,24351759,24351907,24352012,24352022,24352102,24352188,24352220,24352236,51466642&c=TVHTML5&sefc=1&txp=8218224&n=PDeZoNEM0qXyjQ&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRQIgHLFA9CZIRvIOzkShfejL8y0EaIb3RqwnEpFfL2YYBU0CIQDPJR9PnLy2hylC9bEosxK6gdE7btqgJUVSA44G_IV27w%3D%3D&rm=sn-8xgn5uxa-4g5l7s,sn-8xgn5uxa-quhz7z,sn-bg0esd7l&rrc=79,79,80,104&req_id=ce768f46b20a3ee&cm2rm=sn-4g5e6r76&rms=ltu,au&redirect_counter=4&cms_redirect=yes&cmsv=e&ipbypass=yes&met=1750166534,&mh=x3&mip=200.212.26.114&mm=34&mn=sn-bg0e6ner&ms=ltu&mt=1750166200&mv=m&mvi=2&pl=23&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms&lsig=APaTxxMwRAIgW3n3KsGIeM4BOmipYDAS_EInnmKmEt7bE8rVXW5UkUwCIHij6-PyouyGcAVIL-Tn0Ia13vK2-NAfW4zvBJX8L8wm";
+                imagem = "img/Alegria.png";
+                cor = "#a3bffa";
+                fundo = "";
+            } else if (tipo === "tristeza") {
+                musica = "https://rr4---sn-bg0s7n7r.googlevideo.com/videoplayback?expire=1750206286&ei=7rJRaIjlJYzEkucPgO326AQ&ip=107.180.184.75&id=o-AH-ZwILnJPWRrzM0v4Zt4JVtptJucveCFw-2BKMXsNnX&itag=249&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&rms=au%2Cau&bui=AY1jyLP-shZpvJU2kwA0NzRAUMsVBdGkCnOm6If3_8ORTcBuByN5Fx9_W-bMb4qxE9hqMeYk1ekVmOHR&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=Q7JBkdIyak_Lbi1VPJtrOpYQ&rqh=1&gir=yes&clen=1278016&dur=206.001&lmt=1496281914770439&keepalive=yes&lmw=1&c=TVHTML5&sefc=1&n=JqguBlwvAvKGDg&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRAIgWKqxJwlS6cfFQaEZBVSMZre5Ax5-IwQGbpM6J5wlwpkCIGSPV-MNctdVwXAxyDDQhVb2BkPsSOXKo_LoZ-G2fHtB&redirect_counter=1&rm=sn-p5qell7z&rrc=104&fexp=24350590,24350737,24350827,24350961,24351173,24351316,24351318,24351495,24351528,24351759,24351907,24352012,24352022,24352037,24352102,24352188,24352220,24352236,24352322,24352324&req_id=21ae572cef8aa3ee&cms_redirect=yes&cmsv=e&ipbypass=yes&met=1750184699,&mh=Lz&mip=201.63.217.82&mm=31&mn=sn-bg0s7n7r&ms=au&mt=1750184257&mv=m&mvi=4&pl=21&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms&lsig=APaTxxMwRQIhAPF8m0qwyu36Wpp3caAYIaA_CrQmKD-m7T_cCgbmiz_AAiALhgx6MjpdTRT0ozBDyOflI2-i9QAGFddmFTVXDp8hOg%3D%3D";
+                imagem = "img/Tristeza.png";
+                cor = "#a3bffa";
+                fundo = "img/tristeza.jpg";
+            } else if (tipo === "aventura") {
+                musica = "https://rr3---sn-bg0e6nel.googlevideo.com/videoplayback?expire=1750186885&ei=JWdRaI_3ApyH9fgPpJWJuA0&ip=82.26.85.123&id=o-APMyGCxhlw_E_NNjVzFSds1P321FppmJ4THWj-i1pgVU&itag=249&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AY1jyLMpW3RikWBRekFAsQB-OBS9FAL-eTHF7t-FRStZTkhLZSfIwpu2OlJLQq7w3H8KlH120AXSvEiW&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=ubRkc4fo120Zvkschr1o-F0Q&rqh=1&gir=yes&clen=787413&dur=104.061&lmt=1744563866897818&keepalive=yes&lmw=1&c=TVHTML5&sefc=1&txp=5532534&n=xpZRVBaO-2B8HQ&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRgIhAKw-Q1uVg8OxTIqyTJl0CxiDoTQAmPrQCMqDlCQJoKuVAiEAoN0BMZszzsqNMB8D9hIJazOXPpnQAwYtH3mcfYQH-_c%3D&rm=sn-4g5e6l76&rrc=104,80&fexp=24350590,24350737,24350827,24350961,24351173,24351316,24351318,24351495,24351528,24351759,24351907,24352012,24352022,24352102,24352188,24352220,24352236&req_id=b50af122d7aca3ee&ipbypass=yes&redirect_counter=2&cm2rm=sn-xhcg5uxa-bg0r7e&cms_redirect=yes&cmsv=e&met=1750185106,&mh=i6&mip=200.212.26.114&mm=29&mn=sn-bg0e6nel&ms=rdu&mt=1750184729&mv=m&mvi=3&pl=23&rms=rdu,au&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms&lsig=APaTxxMwRQIhAPbiNdVgJjeVeAYd6bRL9RLACPkeP0WWXzNTr2HIhMioAiBcSPB1IkqYzpuPJk-QMxN_8qDEhR_Hl_mHhh4d3OXP2A%3D%3D";
+                imagem = "img/Ação.png";
+                cor = "#f4a261";
+                fundo = "img/aventura.jpg";
+            } else if (tipo === "amor") {
+                musica = "https://rr2---sn-a5msen7l.googlevideo.com/videoplayback?expire=1750207987&ei=k7lRaNv-JLL-i9oP4-6twQ4&ip=96.62.130.239&id=o-ANR7aon2HUK5utmOoMO9_nVrfXISIbBpvlhWFnrfav-1&itag=249&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&rms=au%2Cau&bui=AY1jyLOZc5M88n-DnCyDndscektPn4kOTHNMN9QSPMgZrEOCxLJzrVBiAh62JiKojMBxC7-sgP_XZLsO&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=DxtlHdP1Jm3rm3djCS_EpU0Q&rqh=1&gir=yes&clen=1222613&dur=186.301&lmt=1740099392020726&keepalive=yes&lmw=1&c=TVHTML5&sefc=1&txp=5432534&n=3FYVsOSkBgO-zQ&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRQIhAKD7vx97V8Bx-eWbTpu7-Am7KMIsmAaW6ytvfGg8I7tPAiBs5tiIFeDW-Ha3SGqH93pPCtlfkWczBhoGoS-tZewfcw%3D%3D&redirect_counter=1&rm=sn-4g5ek77s&rrc=104&fexp=24350590,24350737,24350827,24350961,24351173,24351316,24351318,24351495,24351528,24351759,24351907,24352011,24352022,24352102,24352188,24352220,24352236&req_id=3360d3e72979a3ee&cms_redirect=yes&cmsv=e&ipbypass=yes&met=1750186396,&mh=1v&mip=201.63.217.82&mm=31&mn=sn-a5msen7l&ms=au&mt=1750185332&mv=D&mvi=2&pl=0&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms&lsig=APaTxxMwRAIgA3-H07boq38fmV7mdS3QrUtPWgraS72F2RkD7qwREa0CIFKuljV51kWeEmmFIr-3ASRx55fITdFQxhP6gjCWSU7V";
+                imagem = "img/Amor.png";
+                cor = "#ff9999";
+                fundo = "img/amor.jpg";
+            } else if (tipo === "misterio") {
+                musica = "https://rr3---sn-bg0e6ney.googlevideo.com/videoplayback?expire=1750208172&ei=TLpRaOf7IezWi9oPj66E0QQ&ip=104.253.63.107&id=o-AHsBASMlYPX1Pt7GoVctWC17wLTvwIqC2A4AcFgwcvZX&itag=251&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AY1jyLPnDEpdsj-ArShoXKC40YYX0_HK5gT8bGZrrsgsCCna-wVheSF1s1JnGPUWMBOBUc-NMZ7CbBbs&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=_vrLF1Czw-u3I3gndDXkR4YQ&rqh=1&gir=yes&clen=1925936&dur=120.161&lmt=1713801501230586&keepalive=yes&lmw=1&c=TVHTML5&sefc=1&txp=6218224&n=UKQJug70auAFXQ&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRQIgY0tRO9_VgR4YOxyQ2ASPNrj-ApczNxZaS8UtwX7AcEECIQCul9pvoflKPOLdg0wxnTxll1eZ0vZan_YCepgpnONLFg%3D%3D&rm=sn-8xgn5uxa-4g5l7d,sn-8xgn5uxa-quhz7z,sn-4g5erk76&rrc=79,79,104,80&fexp=24350590,24350737,24350827,24350961,24351173,24351316,24351318,24351495,24351528,24351759,24351907,24352011,24352022,24352102,24352188,24352220,24352236,24352322&req_id=2cc650e58597a3ee&ipbypass=yes&redirect_counter=4&cm2rm=sn-a5mel77e&cms_redirect=yes&cmsv=e&met=1750186581,&mh=TP&mip=200.212.26.114&mm=34&mn=sn-bg0e6ney&ms=ltu&mt=1750185978&mv=u&mvi=3&pl=23&rms=ltu,au&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms&lsig=APaTxxMwRQIgOQ7z-WEwF7V9ilA3gL94UP4237f4xcwUIArmoSywo1UCIQCNT1oRhuoQFxnwyzfBW7IAFyBMvpPu2Mw3SBXWWyx_Ng%3D%3D";
+                imagem = "img/Terror.png";
+                cor = "#2f2f2f";
+                fundo = "img/misterio.jpg";
+            } else if (tipo === "calma") {
+                musica = "https://rr2---sn-xhcg5uxa-bg0k.googlevideo.com/videoplayback?expire=1750187515&ei=m2lRaI3HBOfPi9oP8IuAuAo&ip=96.62.130.107&id=o-AIkz4gRriEvjKw_KdKxtGXbi6qg2oW8iBbe_PlzdT21u&itag=249&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&rms=au%2Cau&bui=AY1jyLMgHPr8C7Yf7jrzZemC5m72i3H6nZyiHRyVD4_C-vqnnFkX9ZS7vI7Lg6y2srz0T8Xe0oWvCVyn&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=q4CWL0rE-W4Z0psW7BzwvrkQ&rqh=1&gir=yes&clen=1687978&dur=263.021&lmt=1726198723034608&keepalive=yes&lmw=1&fexp=24350590,24350737,24350827,24350961,24351173,24351316,24351318,24351495,24351528,24351759,24351907,24352012,24352022,24352102,24352154,24352188,24352220,24352236,51466698&c=TVHTML5&sefc=1&txp=5532434&n=pWIAZM3l5QQDQA&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRAIgXL4p6vmqlm3lIfdbEXEvtZg7F0ptjThzjpeOrum_D-oCIAMX31oFw6HbqXfyaZtAsBXVi-kn_dZdisvj-wjHGeKW&redirect_counter=1&rm=sn-4g5eky76&rrc=104&req_id=4f7e62c6d90fa3ee&cms_redirect=yes&cmsv=e&ipbypass=yes&met=1750166048,&mh=Yx&mip=200.212.26.114&mm=31&mn=sn-xhcg5uxa-bg0k&ms=au&mt=1750165879&mv=u&mvi=2&pcm2cms=yes&pl=23&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pcm2cms,pl,rms&lsig=APaTxxMwRQIgHeYxSQ6jx5rVBErFtCTpnlzqkeu67K9JpzdyawGYdVECIQCfp7VBy5PXpR80foAhFo3gG__wr41vTHSkUNHlxkda7Q%3D%3D";
+                imagem = "img/Relaxamento.png";
+                cor = "#d1e8e2";
+                fundo = "img/calma.jpg";
+            } else if (tipo === "animacao") {
+                musica = "https://rr5---sn-bg0e6n7y.googlevideo.com/videoplayback?expire=1750187934&ei=PmtRaNyPKcLe2_gP9MLYsAo&ip=82.23.100.23&id=o-APWzvSCf7umPaDIVhtpbQV6mRVxkG0zKmi7j5CcaeWRk&itag=251&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AY1jyLMAmeS7cQDXNaf2K3DcuNgXng4sT0EFjUh-HLnEGSDrETkq-gCk1PqHvLCMeLIi_QZgK3uxyFOO&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=hyyK-EVrjUQJvkU7i7jFp-IQ&rqh=1&gir=yes&clen=3777976&dur=214.821&lmt=1714560615992432&keepalive=yes&lmw=1&c=TVHTML5&sefc=1&txp=5308224&n=KnFp0sO9qrleow&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRAIgMN7KoRjgg9NukTeuOgZfuJPi5AeM4etrc7PczSQ8DTcCIGXmwrgvFA7sgbZh46v3BNRFa3dminYPB6JDpAeje4jc&rm=sn-gvbxgn-tt1ek7s,sn-tt1lz76&rrc=79,104&fexp=24350590,24350737,24350827,24350961,24351173,24351316,24351318,24351495,24351528,24351759,24351907,24352011,24352014,24352022,24352102,24352188,24352220,24352236&req_id=a185a379f888a3ee&cmsv=e&rms=nxu,au&redirect_counter=2&cms_redirect=yes&ipbypass=yes&met=1750166346,&mh=Yk&mip=200.212.26.114&mm=30&mn=sn-bg0e6n7y&ms=nxu&mt=1750165113&mv=u&mvi=5&pl=23&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms&lsig=APaTxxMwRQIhAMONFY7Z1h0xYgacuKQfUgwT_W0WCUoiyRuZ9_9iEVJsAiBDrNn34MMqoGRQamLF1T-6l5x842zFpxDAq7jCzu8RMQ%3D%3D";
+                imagem = "img/Animação.png";
+                cor = "#ff6347";
+                fundo = "img/animacao.jpg";
+            } else if (tipo === "suspense") {
+                musica = "https://rr3---sn-bg0s7nlk.googlevideo.com/videoplayback?expire=1750187270&ei=pmhRaNDmB8y0kucPrcO3sQQ&ip=62.164.228.68&id=o-AOLeevrq3_vg2YVI8ISY6XLPAGm5OhuJzdeFm4j12AGi&itag=249&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AY1jyLPBmwyJzSH_t-2lTd3k0MIlTT26b06TsFkPNUymDIRpGb1jqGF685dserEGoNAw0Hiqp1nuECXl&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=b4H48zthf9JUD-lD45fXPdIQ&rqh=1&gir=yes&clen=1130142&dur=149.021&lmt=1729699433582326&keepalive=yes&lmw=1&c=TVHTML5&sefc=1&txp=5308224&n=Uv41WY82bslucA&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRQIhANkkwl_GsoeednTT5FFiWN1-46grsjUq8YJ_vqV-ID9xAiAr-Ssk97AkaePHV6yC92E3xHN-Dd3GarFIkbAKjMkZzw%3D%3D&cm2rm=sn-p5qell7s&rrc=80,104&fexp=24350590,24350737,24350827,24350961,24351173,24351316,24351318,24351495,24351528,24351759,24351907,24352011,24352022,24352102,24352188,24352220,24352236,24352322&req_id=453d7e7d666a3ee&rms=ltu,au&redirect_counter=2&rm=sn-bg0ee67s&cms_redirect=yes&cmsv=e&ipbypass=yes&met=1750165681,&mh=u9&mip=200.212.26.114&mm=34&mn=sn-bg0s7nlk&ms=ltu&mt=1750165491&mv=m&mvi=3&pl=23&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms&lsig=APaTxxMwRQIhAMWNO87nc5QvSod5uNapd3ctSgbnznCUFTBE7GAuaNYEAiBIAWInFadEqhlOiY8jh7hHZ82y3GD2UzcPLLizGxjWHg%3D%3D";
+                imagem = "img/Suspense.png";
+                cor = "#4a2c2a";
+                fundo = "img/suspense.jpg";
+            }
+
+            document.body.style.backgroundColor = cor;
+            document.body.style.backgroundImage = fundo ? `url('${fundo}')` : "none";
+            document.body.style.backgroundSize = "cover";
+            document.body.style.backgroundPosition = "center";
+            document.body.style.backgroundRepeat = "no-repeat";
+
+            foto.src = imagem;
+            foto.style.display = imagem ? "block" : "none";
+            audio.src = musica;
+            audio.style.display = "block";
+            audio.play();
+            musicaNome.textContent = "Tocando: " + (nomeMusica || tipo.charAt(0).toUpperCase() + tipo.slice(1));
+        }
+
+        function parar() {
+            const audio = document.getElementById("audio");
+            const foto = document.getElementById("foto");
+            const musicaNome = document.getElementById("musicaNome");
+
+            audio.pause();
+            audio.currentTime = 0;
+            audio.style.display = "none";
+            foto.style.display = "none";
+            musicaNome.textContent = "";
+            document.body.style.backgroundColor = "#ffffff";
+            document.body.style.backgroundImage = "none";
+        }
+    </script>
+</body>
+</html>
